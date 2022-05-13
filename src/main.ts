@@ -1,13 +1,17 @@
 import axios, { Axios } from "axios";
 
-type ItemsArr ={
-    title: string;
-    cost_currency: "RUB";
-    cost_value: string;
-    droppof_point: number;
-    pickup_point: number;
-    quantity: number;
-}[]
+enum currency {
+  RUB="RUB"
+}
+interface item {
+  title: string;
+  cost_currency: currency.RUB;
+  cost_value: number;
+  dropof_point: number;
+  pickup_point: number;
+  quantity: number;
+}
+type Items = Array<item>;
 
 type Coordinates = {
   coordinates_x: number;  //Longitude
@@ -37,7 +41,7 @@ class YandexDeliveryController{
   }
   
   ApplicationWithPrepayment( 
-      items: ItemsArr, 
+      items: Items, 
       request_id: string,
       taxi_class: "courier",
       comment: string,
