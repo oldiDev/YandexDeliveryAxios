@@ -1,10 +1,19 @@
-export const delayMillis = (delayMs: number): Promise<void> => new Promise(resolve => setTimeout(resolve, delayMs));
+import axios, { Axios } from "axios";
 
-export const greet = (name: string): string => `Hello ${name}`
-
-export const foo = async (): Promise<boolean> => {
-  console.log(greet('World'))
-  await delayMillis(1000)
-  console.log('done')
-  return true
+class YandexDeliveryController{
+ client: Axios;
+  constructor(
+    // params
+    // key: process.env.APIKEY
+  ){
+    this.client = axios.create({
+      baseURL: 'https://b2b.taxi.yandex.net/b2b/cargo/integration/v2/claims/',
+      timeout: 1000,
+      // headers: {'X-Custom-Header': 'foobar'}
+    });
+  }
+  ApplicationWithPrepayment(){
+    // use client to create request
+  }
 }
+export default YandexDeliveryController
