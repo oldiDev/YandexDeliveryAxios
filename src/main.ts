@@ -1,12 +1,12 @@
-import axios, { Axios } from "axios";
+import axios, { Axios, AxiosResponse } from "axios";
 //import constants from "./constants";
-import { ApplicationWithPrepaymentPayload } from "./types";
+import { ApplicationWithPrepaymentPayload, AWithPtGetOrderDataType } from "./types";
 // constants: like { referral_source  }
 import { config } from 'dotenv';
 config() // load .env file content
 
 class YandexDeliveryController{
-  
+  AWithPtGetOrderData: any;
   client: Axios;
   constructor(
     // params
@@ -81,11 +81,14 @@ class YandexDeliveryController{
     _payload: ApplicationWithPrepaymentPayload
   ){
     return new Promise((_resolve, _reject)=>{
-      this.client.post(`/v1/claims/cancel?claim_id=${_payload.getInformation_getDeliveriPrice_acceptOrder_cansleOrder }`,{"cancel_state":"free","version":1}).then((response) => {
+      this.client.post(`/v1/claims/cancel?claim_id=${_payload.getInformation_getDeliveriPrice_acceptOrder_cansleOrder }`,{"cancel_state":"free","version":1})
+      .then((response: AxiosResponse<AWithPtGetOrderDataType>) => {
           _resolve(JSON.stringify(response.data))
-
-          _payload.status = response.data.status;
-          
+          if(response.status == 200){
+            // this.AWithPtGetOrderData = response.data;
+            // response.data.
+          }
+          // you can't asign a param item in typescript
         })
       .catch((error) => {
         _reject(error);
