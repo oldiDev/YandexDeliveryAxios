@@ -27,7 +27,7 @@ class YandexDeliveryController{
       _payload: ApplicationWithPrepaymentPayload
     ){
 
-    let data = _payload.data;
+    let data = _payload.create;
 
     let config = {
       method: 'post',
