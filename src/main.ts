@@ -33,8 +33,8 @@ class YandexDeliveryController{
       this.client.post(`/v2/claims/create?request_id=${_payload.request_id}`,_payload.create).then((response) => {
           _resolve(JSON.stringify(response.data))
 
-          _payload.getInformation_getDeliveriPrice_acceptOrder_cansleOrder = _resolve.id;
-          _payload.delivery_info = _resolve.taxi_offer;
+          _payload.getInformation_getDeliveriPrice_acceptOrder_cansleOrder = response.data.id;
+          _payload.delivery_info = response.data.taxi_offer;
         })
       .catch((error) => {
         _reject(error);
@@ -49,10 +49,10 @@ class YandexDeliveryController{
       this.client.post(`/v1/claims/info?claim_id=${_payload.getInformation_getDeliveriPrice_acceptOrder_cansleOrder }`).then((response) => {
           _resolve(JSON.stringify(response.data))
 
-          _payload.status = _resolve.status;
+          _payload.status = response.data.status;
 
           if(!_payload.delivery_info)
-            _payload.delivery_info = _resolve.taxi_offer;
+            _payload.delivery_info = response.data.taxi_offer;
 
         })
       .catch((error) => {
@@ -68,7 +68,7 @@ class YandexDeliveryController{
       this.client.post(`/v1/claims/accept?claim_id=${_payload.getInformation_getDeliveriPrice_acceptOrder_cansleOrder }`,{"version":1}).then((response) => {
           _resolve(JSON.stringify(response.data))
 
-          _payload.status = _resolve.status;
+          _payload.status = response.data.status;
 
         })
       .catch((error) => {
@@ -84,7 +84,7 @@ class YandexDeliveryController{
       this.client.post(`/v1/claims/cancel?claim_id=${_payload.getInformation_getDeliveriPrice_acceptOrder_cansleOrder }`,{"cancel_state":"free","version":1}).then((response) => {
           _resolve(JSON.stringify(response.data))
 
-          _payload.status = _resolve.status;
+          _payload.status = response.data.status;
           
         })
       .catch((error) => {
