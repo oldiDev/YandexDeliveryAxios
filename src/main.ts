@@ -1,5 +1,5 @@
 import axios, { Axios } from "axios";
-import constants from ".constants/";
+//import constants from ".constants/";
 import { ApplicationWithPrepaymentPayload } from "./types";
 // constants: like { referral_source  }
 class YandexDeliveryController{
@@ -26,14 +26,21 @@ class YandexDeliveryController{
   ApplicationWithPrepayment( 
       _payload: ApplicationWithPrepaymentPayload
     ){
-      
+
     let data = _payload.data;
 
     let config = {
       method: 'post',
-      url: 'create?request_id='+_payload.request_id
+      url: 'create?request_id='+_payload.request_id,
+      data: JSON.stringify(data)
     };
-
+    axios(config)
+      .then((response) =>{
+        console.log(JSON.stringify(response.data));
+      })
+      .catch((error)=>{
+        console.log(error)
+      })
   }
 }
 export default YandexDeliveryController
