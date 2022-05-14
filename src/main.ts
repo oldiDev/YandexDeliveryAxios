@@ -72,7 +72,11 @@ class YandexDeliveryController{
       pims_shop_coordinates: Coordinates, 
       user_coordinates: Coordinates, 
     ){
-    // use client to create request
+    let config = {
+      method: 'post',
+      url: 'create?request_id='+request_id
+    };
+
   }
 }
 export default YandexDeliveryController
