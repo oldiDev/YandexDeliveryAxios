@@ -1,5 +1,5 @@
 import YandexDeliveryController from './main'
-import { GetOrderDataResponce } from './types';
+// import { GetOrderDataResponce } from './types';
 
 test('testing ApplicationWithPrepaymentGetOrderData', () => {
     // if(YandexDeliveryController) test.skip("all good")

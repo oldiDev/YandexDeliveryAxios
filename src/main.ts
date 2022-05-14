@@ -34,7 +34,7 @@ class YandexDeliveryController{
       _payload: ApplicationWithPrepaymentPayload
     ){
     return new Promise((_resolve, _reject)=>{
-      this.client.post(`/v2/claims/create?request_id=${_payload.request_id}`,_payload.create).then((response: AxiosResponse<AWithPtGetFullOrderData>) => {
+      this.client.post(`/v2/claims/create?request_id=${_payload.request_id}`,_payload.create).then((response: AxiosResponse<AWithPtGetOrderDataType>) => {
           _resolve(JSON.stringify(response.data))
 
         })
