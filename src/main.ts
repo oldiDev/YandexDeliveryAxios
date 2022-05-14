@@ -3,6 +3,20 @@ import axios, { Axios } from "axios";
 enum currency {
   RUB="RUB"
 }
+
+enum cities{
+  Mos="Moscow"
+}
+
+enum countries{
+  Ru="Russia"
+}
+
+enum taxiDeliver{
+  courier="courier"
+}
+
+
 interface item {
   title: string;
   cost_currency: currency.RUB;
@@ -43,15 +57,14 @@ class YandexDeliveryController{
   ApplicationWithPrepayment( 
       items: Items, 
       request_id: string,
-      taxi_class: "courier",
+      taxi_class: taxiDeliver.courier,
       comment: string,
       user_name: string,
       user_phone_number: string,
       optional_return: false,
-      referral_source: "pims_app",
       building: string, 
-      city: "Moscow",
-      country: "Russia",
+      city: cities.Mos,
+      country: countries.Ru,
       door_code:string,
       sflat:number,
       sfloor:number,
