@@ -7,6 +7,7 @@ test('testing ApplicationWithPrepaymentGetOrderData', () => {
     YandexApi.ApplicationWithPrepaymentGetOrderData({
         claim_id: "0ab1c23d4e5678f901g234h45678i01"
     }).then((res: any)=>{
+        console.log(res)
         expect(!!res.code).not.toEqual("not_found") // just example 
         // you can check (res.status value or code or message )
         // depending on the responce type
