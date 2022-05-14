@@ -60,8 +60,8 @@ interface RoutePoints {
     type:typeOfPoint,
     visit_order: number
 }
-type routePointsArray = Array<item>
-interface Data {
+type routePointsArray = Array<RoutePoints>
+interface Create {
     client_requirements : ClientRequirements,
     comment: string,
     emergency_contact: Contact,
@@ -74,7 +74,7 @@ interface Data {
 }
 interface ApplicationWithPrepaymentPayload {
       request_id: string,
-      data: Data
+      create: Create
 }
 export { item, items, currency, city, Coordinates,
     ApplicationWithPrepaymentPayload }
