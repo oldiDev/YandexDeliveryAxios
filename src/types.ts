@@ -29,6 +29,8 @@ interface item {
     pickup_point: number;
     quantity: number;
 }
+type items = Array<item>;
+
 interface Address {
     building:string,
     city: city,
@@ -43,20 +45,36 @@ interface Address {
     visit_order: number
 }
 
-type items = Array<item>;
+interface ClientRequirements {
+    taxi_class: taxiClass
+} 
+interface Contact{
+    name: string,
+    phone: string
+}
+interface RoutePoints {
+    adress: Address,
+    contact: Contact,
+    pickup_code: string,
+    point_id: number,
+    type:typeOfPoint,
+    visit_order: number
+}
+type routePointsArray = Array<item>
+interface Data {
+    client_requirements : ClientRequirements,
+    comment: string,
+    emergency_contact: Contact,
+    items: items, 
+    route_points: routePointsArray,
+    skip_act: boolean,
+    skip_client_notify: boolean,
+    skip_door_to_door: boolean,
+    skip_emergency_notify: boolean
+}
 interface ApplicationWithPrepaymentPayload {
-      items: items, 
       request_id: string,
-      taxi_class: taxiClass,
-      comment: string,
-      optional_return: false,
-      referral_source: string,
-      name: string,
-      phone: string,
-      user_address: Address,
-      shop_address: Address,
-      type: typeOfPoint,
-      pickup_code: string,
+      data: Data
 }
 export { item, items, currency, city, Coordinates,
     ApplicationWithPrepaymentPayload }
