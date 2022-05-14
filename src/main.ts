@@ -20,13 +20,8 @@ class YandexDeliveryController{
         'Authorization': `Bearer ${process.env.APIKEY || _key}`,
         'Connection': 'keep-alive',
         'Accept-Encoding': 'gzip, deflate, br',
-<<<<<<< HEAD
-        'Accept-Language': 'ru/ru',
-        'Accept': '*/*'
-=======
         'Accept': '*/*',
         'Accept-Language': 'ru/ru'
->>>>>>> 75d4d6013472e7d74a100744b8d9a420d3227f4b
      }
     });
   }
@@ -34,16 +29,6 @@ class YandexDeliveryController{
   ApplicationWithPrepayment( 
       _payload: ApplicationWithPrepaymentPayload
     ){
-<<<<<<< HEAD
-      
-    let data = _payload.data;
-
-    let config = {
-      method: 'post',
-      url: 'create?request_id='+_payload.request_id
-    };
-
-=======
     return new Promise((_resolve, _reject)=>{
       this.client.post(`/create?request_id=${_payload.request_id}`).then((response) => {
           _resolve(JSON.stringify(response.data))
@@ -52,7 +37,6 @@ class YandexDeliveryController{
         _reject(error);
       });
     })
->>>>>>> 75d4d6013472e7d74a100744b8d9a420d3227f4b
   }
 }
 export default YandexDeliveryController
