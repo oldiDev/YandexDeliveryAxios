@@ -26,6 +26,9 @@ class YandexDeliveryController{
   ApplicationWithPrepayment( 
       _payload: ApplicationWithPrepaymentPayload
     ){
+      
+    let data = _payload.data;
+
     let config = {
       method: 'post',
       url: 'create?request_id='+_payload.request_id
