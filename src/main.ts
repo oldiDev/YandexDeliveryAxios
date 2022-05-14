@@ -1,42 +1,10 @@
 import axios, { Axios } from "axios";
-
-enum currency {
-  RUB="RUB"
-}
-
-enum cities{
-  Mos="Moscow"
-}
-
-enum countries{
-  Ru="Russia"
-}
-
-enum taxiDeliver{
-  courier="courier"
-}
-
-
-interface item {
-  title: string;
-  cost_currency: currency.RUB;
-  cost_value: number;
-  dropof_point: number;
-  pickup_point: number;
-  quantity: number;
-}
-type Items = Array<item>;
-
-type Coordinates = {
-  coordinates_x: number;  //Longitude
-  coordinates_y: number; //Latitude
-}
-
-
+import constants from "./constants";
+import { ApplicationWithPrepaymentPayload } from "./types";
+// constants: like { referral_source  }
 class YandexDeliveryController{
   
   client: Axios;
-  
   constructor(
     // params
     // key: process.env.APIKEY
@@ -55,26 +23,11 @@ class YandexDeliveryController{
   }
   
   ApplicationWithPrepayment( 
-      items: Items, 
-      request_id: string,
-      taxi_class: taxiDeliver.courier,
-      comment: string,
-      user_name: string,
-      user_phone_number: string,
-      optional_return: false,
-      building: string, 
-      city: cities.Mos,
-      country: countries.Ru,
-      door_code:string,
-      sflat:number,
-      sfloor:number,
-      porch: string,
-      pims_shop_coordinates: Coordinates, 
-      user_coordinates: Coordinates, 
+      _payload: ApplicationWithPrepaymentPayload
     ){
     let config = {
       method: 'post',
-      url: 'create?request_id='+request_id
+      url: 'create?request_id='+_payload.request_id
     };
 
   }
