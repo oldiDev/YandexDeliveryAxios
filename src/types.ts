@@ -2,21 +2,14 @@ enum currency {
     RUB="RUB"
 }
 enum city {
-    Moscow="Москва"
+    Moscow="Moscow"
 }
 enum country {
-    Russia="Россиская Федерация"
+    Russia="Russia"
 }
 enum taxiClass {
     courier="courier"
 }
-
-enum typeOfPoint {
-    source = "source",
-    destination = "destination",
-    return ="return"
-}
-
 interface Coordinates {
     coordinates_x: number;  //Longitude
     coordinates_y: number; //Latitude
@@ -29,34 +22,32 @@ interface item {
     pickup_point: number;
     quantity: number;
 }
-interface Address {
-    building:string,
-    city: city,
-    street: string,
-    country: country,
-    coordinates: Coordinates,
-    door_code: string,
-    sflat: number,
-    sfloor: number,
-    porch: string,
-    fullname: string,
-    visit_order: number
-}
-
 type items = Array<item>;
-interface ApplicationWithPrepaymentPayload {
+interface ApplicationWithPrepaymentPayload {  // check create.json file and do the same structure 
       items: items, 
       request_id: string,
       taxi_class: taxiClass,
       comment: string,
+      user_name: string,
+      user_phone_number: string,
       optional_return: false,
       referral_source: string,
-      name: string,
-      phone: string,
-      user_address: Address,
-      shop_address: Address,
-      type: typeOfPoint,
-      pickup_code: string,
+      building: string, 
+      city: city,
+      country: country,
+      door_code:string,
+      sflat:number,
+      sfloor:number,
+      porch: string,
+      pims_shop_coordinates: Coordinates, 
+      user_coordinates: Coordinates, 
+}
+
+interface Address {
+    // create interface for address
+}
+interface CreateResponce {
+    // create responce interface if you want 
 }
 export { item, items, currency, city, Coordinates,
     ApplicationWithPrepaymentPayload }
