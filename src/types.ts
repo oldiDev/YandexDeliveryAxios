@@ -60,7 +60,7 @@ interface RoutePoints {
     type:typeOfPoint,
     visit_order: number
 }
-type routePointsArray = Array<item>
+type routePointsArray = Array<RoutePoints>
 interface Data {
     client_requirements : ClientRequirements,
     comment: string,
