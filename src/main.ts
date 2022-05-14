@@ -17,6 +17,7 @@ class YandexDeliveryController{
         'Authorization': 'Bearer AQAAAABbyFZXAAVM1VNZION7A0cqsZ69tYFESYc',
         'Connection': 'keep-alive',
         'Accept-Encoding': 'gzip, deflate, br',
+        'Accept-Language': 'ru/ru',
         'Accept': '*/*'
      }
     });
