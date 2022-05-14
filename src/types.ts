@@ -22,6 +22,58 @@ interface AWithPtGetOrderDataType {
     user_request_revision?: "1", // where we can get them from the app 
     skip_client_notify?: false
 }
+interface offer {
+    offer_id: string,
+    price_raw: number,
+    price: string,
+    valid_until: string
+}
+interface currency_rules {
+    code: string,
+    text: string,
+    template: string,
+    sign: string
+}
+interface pricing {
+    offer: offer,
+    currency:string,
+    currency_rules: currency_rules
+}
+interface client_requirements {
+    taxi_class: taxiClass,
+    pro_courier: boolean,
+    assign_robot: boolean
+}
+interface matched_cars {
+    taxi_class:taxiClass,
+    door_to_door:boolean
+}
+type matched_car = Array<matched_cars>
+
+interface AWithPtGetFullOrderData{
+    
+        id?: string,
+        corp_client_id?: string,
+        items?: items,
+        route_points?: routePointsArray,   
+        skip_door_to_door?: boolean,
+        skip_client_notify?: boolean,
+        skip_emergency_notify?: boolean,
+        skip_act: boolean,
+        optional_return: boolean,
+        eta: number,
+        created_ts: string,
+        updated_ts: string,
+        taxi_offer: DeliveryInformation,
+        pricing: pricing,
+        available_cancel_state: string,
+        client_requirements: client_requirements
+        matched_cars: matched_car
+        comment: string,
+        features: [],
+        revision: number
+    
+}
 enum typeOfPoint {
     source = "source",
     destination = "destination",
@@ -104,5 +156,5 @@ interface ApplicationWithPrepaymentPayload {
 }
 export {
     item, items, currency, city, Coordinates,
-    ApplicationWithPrepaymentPayload, AWithPtGetOrderDataType
+    ApplicationWithPrepaymentPayload, AWithPtGetOrderDataType,AWithPtGetFullOrderData
 }

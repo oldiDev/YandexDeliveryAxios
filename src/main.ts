@@ -1,6 +1,6 @@
 import axios, { Axios, AxiosResponse } from "axios";
 //import constants from "./constants";
-import { ApplicationWithPrepaymentPayload, AWithPtGetOrderDataType } from "./types";
+import { ApplicationWithPrepaymentPayload, AWithPtGetOrderDataType,AWithPtGetFullOrderData } from "./types";
 // constants: like { referral_source  }
 import { config } from 'dotenv';
 config() // load .env file content
@@ -30,11 +30,12 @@ class YandexDeliveryController{
       _payload: ApplicationWithPrepaymentPayload
     ){
     return new Promise((_resolve, _reject)=>{
-      this.client.post(`/v2/claims/create?request_id=${_payload.request_id}`,_payload.create).then((response) => {
+      this.client.post(`/v2/claims/create?request_id=${_payload.request_id}`,_payload.create).then((response: AxiosResponse<AWithPtGetFullOrderData>) => {
           _resolve(JSON.stringify(response.data))
-
-          _payload.getInformation_getDeliveriPrice_acceptOrder_cansleOrder = response.data.id;
-          _payload.delivery_info = response.data.taxi_offer;
+          if(response.status == 200){
+            // this.AWithPtGetOrderData = response.data;
+            // response.data.
+          }
         })
       .catch((error) => {
         _reject(error);
@@ -46,14 +47,14 @@ class YandexDeliveryController{
     _payload: ApplicationWithPrepaymentPayload
   ){
     return new Promise((_resolve, _reject)=>{
-      this.client.post(`/v1/claims/info?claim_id=${_payload.getInformation_getDeliveriPrice_acceptOrder_cansleOrder }`).then((response) => {
+      this.client.post(`/v1/claims/info?claim_id=${_payload.getInformation_getDeliveriPrice_acceptOrder_cansleOrder }`)
+        .then((response: AxiosResponse<AWithPtGetFullOrderData>) => {
           _resolve(JSON.stringify(response.data))
 
-          _payload.status = response.data.status;
-
-          if(!_payload.delivery_info)
-            _payload.delivery_info = response.data.taxi_offer;
-
+          if(response.status == 200){
+            // this.AWithPtGetOrderData = response.data;
+            // response.data.
+          }
         })
       .catch((error) => {
         _reject(error);
@@ -65,11 +66,13 @@ class YandexDeliveryController{
     _payload: ApplicationWithPrepaymentPayload
   ){
     return new Promise((_resolve, _reject)=>{
-      this.client.post(`/v1/claims/accept?claim_id=${_payload.getInformation_getDeliveriPrice_acceptOrder_cansleOrder }`,{"version":1}).then((response) => {
+      this.client.post(`/v1/claims/accept?claim_id=${_payload.getInformation_getDeliveriPrice_acceptOrder_cansleOrder }`,{"version":1})
+      .then((response: AxiosResponse<AWithPtGetOrderDataType>) => {
           _resolve(JSON.stringify(response.data))
-
-          _payload.status = response.data.status;
-
+          if(response.status == 200){
+            // this.AWithPtGetOrderData = response.data;
+            // response.data.
+          }
         })
       .catch((error) => {
         _reject(error);
