@@ -72,9 +72,13 @@ interface Create {
     skip_door_to_door: boolean,
     skip_emergency_notify: boolean
 }
+interface GetInformationAboutOrder{
+    claim_id:string
+}
 interface ApplicationWithPrepaymentPayload {
       request_id: string,
-      create: Create
+      create: Create,
+      getInformation_getDeliveriPrice_acceptOrder_cansleOrder: GetInformationAboutOrder
 }
 export { item, items, currency, city, Coordinates,
     ApplicationWithPrepaymentPayload }

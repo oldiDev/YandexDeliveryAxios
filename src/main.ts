@@ -1,5 +1,5 @@
 import axios, { Axios } from "axios";
-import constants from "./constants";
+//import constants from "./constants";
 import { ApplicationWithPrepaymentPayload } from "./types";
 // constants: like { referral_source  }
 import { config } from 'dotenv';
@@ -32,6 +32,7 @@ class YandexDeliveryController{
     return new Promise((_resolve, _reject)=>{
       this.client.post(`/create?request_id=${_payload.request_id}`).then((response) => {
           _resolve(JSON.stringify(response.data))
+          //get claim_id = data.id
         })
       .catch((error) => {
         _reject(error);
