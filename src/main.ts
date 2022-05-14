@@ -1,5 +1,5 @@
 import axios, { Axios } from "axios";
-import constants from "./constants";
+import constants from ".constants/";
 import { ApplicationWithPrepaymentPayload } from "./types";
 // constants: like { referral_source  }
 class YandexDeliveryController{
