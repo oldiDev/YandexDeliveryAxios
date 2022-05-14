@@ -89,6 +89,11 @@ interface GetInformationAboutOrder {
 interface PerformerInfo {
     courier_name: string;
 }
+interface AcceptClaimResponce {
+    // add responces 
+    code?: string,
+    message?: string,
+}
 interface DeliveryInformation {
     offer_id: string,
     price: string,
@@ -97,12 +102,20 @@ interface DeliveryInformation {
 interface ApplicationWithPrepaymentPayload {
     request_id: string,
     create: Create,
-    getInformation_getDeliveriPrice_acceptOrder_cansleOrder: GetInformationAboutOrder,
+    // getInformation_getDeliveriPrice_acceptOrder_cansleOrder: GetInformationAboutOrder,
     delivery_info: DeliveryInformation,
     performer_info: PerformerInfo,
     status: string
 }
+interface GetOrderDataResponce {
+    // do responce  types here
+    code?: string,
+    message?: string,
+}
 export {
     item, items, currency, city, Coordinates,
-    ApplicationWithPrepaymentPayload, AWithPtGetOrderDataType
+    ApplicationWithPrepaymentPayload, AWithPtGetOrderDataType,
+    GetInformationAboutOrder,
+    AcceptClaimResponce,
+    GetOrderDataResponce
 }
