@@ -51,7 +51,6 @@ interface matched_cars {
 type matched_car = Array<matched_cars>
 
 interface AWithPtGetFullOrderData{
-    
         id?: string,
         corp_client_id?: string,
         items?: items,
@@ -72,7 +71,6 @@ interface AWithPtGetFullOrderData{
         comment: string,
         features: [],
         revision: number
-    
 }
 enum typeOfPoint {
     source = "source",
