@@ -136,6 +136,24 @@ enum status {
     cancelled_by_taxi = "cancelled_by_taxi",
     cancelled_with_items_on_hands = "cancelled_with_items_on_hands"
 }
+
+enum cancel_state{
+    free = "free",
+    paid = "paid"
+}
+interface AWithCanseleOdrderDataType{
+    cancel_state: cancel_state, // Cancellation status (paid or free)
+    version: number // Canceled order version
+}
+
+interface AWithCanseleOdrderDataTypeResponse {
+    id: string, // Application ID received at the stage of creating an application
+    skip_client_notify: boolean,
+    status: status, // Application status
+    user_request_revision: string, // The current version of the changes in the application from the user
+    version: number // Version of the request from the request
+}
+
 interface AWithPtGetOrderDataType {
     code?: string,
     message?: string,
@@ -435,5 +453,7 @@ export {
     ApplicationWithPrepaymentPayload, AWithPtGetOrderDataType,
     GetInformationAboutOrder,
     AcceptClaimResponce,
+    AWithCanseleOdrderDataType,
+    AWithCanseleOdrderDataTypeResponse,
     AWithPtGetFullOrderData
 }

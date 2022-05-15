@@ -1,7 +1,7 @@
 import axios, { Axios, AxiosResponse } from "axios";
 //import constants from "./constants";
 
-import { AcceptClaimResponce, ApplicationWithPrepaymentPayload, AWithPtGetOrderDataType, GetInformationAboutOrder,AWithPtGetFullOrderData } from "./types";
+import { AcceptClaimResponce, ApplicationWithPrepaymentPayload, AWithPtGetOrderDataType, GetInformationAboutOrder,AWithPtGetFullOrderData,AWithCanseleOdrderDataTypeResponse, AWithCanseleOdrderDataType} from "./types";
 
 // constants: like { referral_source  }
 import { config } from 'dotenv';
@@ -73,11 +73,12 @@ class YandexDeliveryController{
   }
   //cansle order
   ApplicationWithPrepaymentCansleOrder( 
-    _payload: GetInformationAboutOrder
+    _payload: GetInformationAboutOrder,
+    _cansele_payload: AWithCanseleOdrderDataType
   ){
     return new Promise((_resolve, _reject)=>{
-      this.client.post(`/v1/claims/cancel?claim_id=${_payload.claim_id }`,{"cancel_state":"free","version":1})
-      .then((response: AxiosResponse<AWithPtGetOrderDataType>) => {
+      this.client.post(`/v1/claims/cancel?claim_id=${_payload.claim_id }`,_cansele_payload)
+      .then((response: AxiosResponse<AWithCanseleOdrderDataTypeResponse>) => {
           _resolve(JSON.stringify(response.data))
           if(response.status == 200){
             // this.AWithPtGetOrderData = response.data;
