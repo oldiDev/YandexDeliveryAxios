@@ -183,8 +183,6 @@ interface pricing {
     final_price?:string, // Price Decimal(19, 4)
     final_pricing_calc_id?: string,
     offer?: offer, // Offer from Taxi (valid for some time)
-    
-    
 }
 
 interface matched_cars {
@@ -273,7 +271,6 @@ interface AWithPtGetFullOrderData{ // Application Information
         version?: number, // version
         warnings?:error_messages_array, //Application Cycle Warnings
         features?: [],
-        
 }
 enum typeOfPoint {
     source = "source",
@@ -449,7 +446,6 @@ interface ApplicationWithPrepaymentPayload {
 }
 export {
     item, items, currency, city, Coordinates,
-
     ApplicationWithPrepaymentPayload,
     GetInformationAboutOrder,
     AcceptClaimResponce,
