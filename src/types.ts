@@ -304,8 +304,8 @@ interface Address {
     coordinates?: Coordinates, // An array of two real numbers [longitude, latitude]. Order matters! Rounded coordinate values ​​are specified.
     country?: country, // current country
     description?:string, // Geographic area qualifying shortname to a global match
-    door_code?: string,// Intercom code
-    door_code_extra?:string,// Additional instructions for intercoms
+    door_code?: string, // Intercom code
+    door_code_extra?:string, // Additional instructions for intercoms
     doorbell_name?: string, // Name on the doorbell
     // flat: number, // Apartment (DEPRECATED)
     // floor: number, // Floor (DEPRECATED)
@@ -331,7 +331,7 @@ interface ClientRequirements {
     assign_robot?: boolean, //rover order ,not need on create order
     cargo_loaders?: number, //The number of movers for the freight rate,not need on create order
     cargo_options?: [cargo_options], //List of additional tariff options.
-    cargo_type?:cargo_type,//List of additional tariff options.
+    cargo_type?:cargo_type, //List of additional tariff options.
     pro_courier?:boolean, //For special rates
     taxi_class?: taxiClass //Taxi class. Possible values: courier, express, cargo
 }
@@ -353,7 +353,7 @@ enum visit_status{
     partial_delivery = "partial_delivery",
     skipped = "skipped"
 }
-interface RoutePoints {// Description of a point in an order with multipoints
+interface RoutePoints { // Description of a point in an order with multipoints
     adress?: Address,
     contact?: Contact,
     external_order_cost?: external_order_cost, // The cost of an external order linked to a point
