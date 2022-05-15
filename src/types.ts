@@ -411,9 +411,11 @@ interface PerformerInfo {
     courier_name: string;
 }
 interface AcceptClaimResponce {
-    // add responces 
-    code?: string,
-    message?: string,
+    id?: string, // Application ID received at the stage of creating an application
+    skip_client_notify?: boolean,
+    status?: status, // Application status
+    user_request_revision?: string, // The current version of the changes in the application from the user
+    version?: number // Version of the request from the request
 }
 interface DeliveryInformation {
     offer_id: string,
