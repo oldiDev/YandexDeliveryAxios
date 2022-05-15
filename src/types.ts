@@ -186,7 +186,7 @@ interface carrier_info{
     name?: string // Carrier name
 }
 interface error_messages{ // Human-understandable error information
-    code?: string, // Machine friendly error code
+    code?: error_code, // Machine friendly error code
     message?: string, // Human-readable localized error text
     source?: string // The source of the warning. 
                     // client_requirements - the warning is related to client requirements; 
