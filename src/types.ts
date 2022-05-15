@@ -429,16 +429,11 @@ interface ApplicationWithPrepaymentPayload {
     performer_info: PerformerInfo,
     status: string
 }
-interface GetOrderDataResponce {
-    // do responce  types here
-    code?: string,
-    message?: string,
-}
 export {
     item, items, currency, city, Coordinates,
 
     ApplicationWithPrepaymentPayload, AWithPtGetOrderDataType,
     GetInformationAboutOrder,
     AcceptClaimResponce,
-    GetOrderDataResponce
+    AWithPtGetFullOrderData
 }

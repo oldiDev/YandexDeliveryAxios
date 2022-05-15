@@ -1,7 +1,7 @@
 import axios, { Axios, AxiosResponse } from "axios";
 //import constants from "./constants";
 
-import { AcceptClaimResponce, ApplicationWithPrepaymentPayload, AWithPtGetOrderDataType, GetInformationAboutOrder, GetOrderDataResponce } from "./types";
+import { AcceptClaimResponce, ApplicationWithPrepaymentPayload, AWithPtGetOrderDataType, GetInformationAboutOrder,AWithPtGetFullOrderData } from "./types";
 
 // constants: like { referral_source  }
 import { config } from 'dotenv';
@@ -49,7 +49,7 @@ class YandexDeliveryController{
   ){
     return new Promise((_resolve, _reject)=>{
 
-      this.client.post(`/v1/claims/info?claim_id=${_payload.claim_id }`).then((response:AxiosResponse<GetOrderDataResponce>) => {
+      this.client.post(`/v1/claims/info?claim_id=${_payload.claim_id }`).then((response:AxiosResponse<AWithPtGetFullOrderData>) => {
           _resolve(JSON.stringify(response.data))
         })
       .catch((error: any) => {
