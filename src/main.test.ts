@@ -3,7 +3,7 @@ import YandexDeliveryController from './main'
 
 test('testing ApplicationWithPrepaymentGetOrderData', () => {
     // if(YandexDeliveryController) test.skip("all good")
-    let YandexApi = new YandexDeliveryController();
+    const YandexApi = new YandexDeliveryController();
     YandexApi.ApplicationWithPrepaymentGetOrderData({
         claim_id: "777babc7374548eba8681f759fdac2cc"
     }).then((res: any)=>{
