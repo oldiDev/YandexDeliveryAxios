@@ -51,6 +51,9 @@ class YandexDeliveryController{
 
       this.client.post(`/v1/claims/info?claim_id=${_payload.claim_id }`).then((response:AxiosResponse<AWithPtGetFullOrderData>) => {
           _resolve(JSON.stringify(response.data))
+          if(response.status == 200){
+            console.log('get')
+          }
         })
       .catch((error: any) => {
         _reject(error);
