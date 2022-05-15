@@ -301,7 +301,7 @@ interface Address {
     comment?: string, // Comment for the courier.
                      // For point A (where to pick up the shipment), use the template: "Delivery from the store <>. Tell the manager that the order is for Yandex.Delivery. Give the order number <> and pick up the parcel. The order was paid for without cash, when transferring the order, you cannot demand money from the recipient delivery."
                      // For points B (where to deliver) in the comment, convey the wishes of the recipient. For example, "the intercom is not working" / "the barrier is closed, call in 10 minutes" / "do not call, the child is sleeping."
-    coordinates?: Coordinates,// An array of two real numbers [longitude, latitude]. Order matters! Rounded coordinate values ​​are specified.
+    coordinates?: Coordinates, // An array of two real numbers [longitude, latitude]. Order matters! Rounded coordinate values ​​are specified.
     country?: country, // current country
     description?:string, // Geographic area qualifying shortname to a global match
     door_code?: string,// Intercom code
