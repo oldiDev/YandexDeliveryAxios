@@ -154,15 +154,15 @@ interface AWithCanseleOdrderDataTypeResponse {
     version: number // Version of the request from the request
 }
 
-interface AWithPtGetOrderDataType {
-    code?: string,
-    message?: string,
-    id?: string,
-    status?: status,
-    version?: 1,
-    user_request_revision?: "1", // where we can get them from the app 
-    skip_client_notify?: false
-}
+// interface AWithPtGetOrderDataType {
+//     code?: string,
+//     message?: string,
+//     id?: string,
+//     status?: status,
+//     version?: 1,
+//     user_request_revision?: "1", // where we can get them from the app 
+//     skip_client_notify?: false
+// }
 interface offer {
     offer_id?: string, // Offer ID
     price?: string, // Price Decimal(19, 4)
@@ -334,7 +334,7 @@ interface ClientRequirements {
     assign_robot: boolean, //rover order ,not need on create order
     cargo_loaders: number, //The number of movers for the freight rate,not need on create order
     cargo_options: [cargo_options], //List of additional tariff options.
-    cargo_type:string,//List of additional tariff options.
+    cargo_type:cargo_type,//List of additional tariff options.
     pro_courier:boolean, //For special rates
     taxi_class: taxiClass //Taxi class. Possible values: courier, express, cargo
 }
@@ -450,7 +450,7 @@ interface ApplicationWithPrepaymentPayload {
 export {
     item, items, currency, city, Coordinates,
 
-    ApplicationWithPrepaymentPayload, AWithPtGetOrderDataType,
+    ApplicationWithPrepaymentPayload,
     GetInformationAboutOrder,
     AcceptClaimResponce,
     AWithCanseleOdrderDataType,
